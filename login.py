@@ -25,7 +25,10 @@ def login(driver):
     driver.find_element(By.XPATH,'//*[@id="j_username"]').send_keys(jsonContent['xuehao'])
     sleep(1)
     driver.find_element(By.XPATH,'//*[@id="j_password"]').send_keys(jsonContent['password'])
-    driver.find_element(By.XPATH,'//*[@id="loginButton"]').click()
+    try:
+        driver.find_element(By.XPATH,'//*[@id="loginButton"]').click()
+    except Exception:
+        print("可能出现账户或者密码错误，请验证您提供的用户信息")
 
 if __name__ == '__main__':
     global driver
